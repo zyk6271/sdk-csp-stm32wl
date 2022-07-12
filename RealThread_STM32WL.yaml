@@ -1,0 +1,872 @@
+---
+vendor: RealThread
+dvendor: STMicroelectronics
+name: STM32WL
+version: 0.2.4
+yaml_version: 1
+type: Chip_Support_Packages
+family_name: STM32
+series:
+  description: |-
+    Long-range wireless STM32WL microcontrollers，complementing the STM32 RF connectivity portfolio, 
+    the STM32WL System-On-Chip integrates both a general purpose microcontroller and a sub-GHz radio 
+    on the same chip,built on Arm® Cortex®‐M4 and Cortex®-M0+ cores (single- and dual-core architectures 
+    available), STM32WL microcontrollers support multiple modulations– LoRa®, (G)FSK, (G)MSK, BPSK – to 
+    ensure flexibility in wireless applications with LoRaWAN®, Sigfox, W-MBUS, mioty® or any other suitable 
+    protocol in a fully open way.
+  series_name: STM32WL
+  peripheral: {}
+  sub_series:
+  - sub_series_name: STM32WL54
+    chips:
+    - chip_name: STM32WL54CCUx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WL54CCUx\link.lds
+          marco:
+          - STM32WL54xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wl54xx_cm4.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wl54xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WL54JCIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WL54JCIx\link.lds
+          marco:
+          - STM32WL54xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wl54xx_cm4.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wl54xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART1
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PA9
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+      rx_pin:
+        default_value: PA10
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB7
+    docs:
+    - file: documents\DS13293.pdf
+      title: STM32WL54xx Data Sheet
+    svd:
+      file: debug\svd\STM32WL5x_CM4.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\baremetal
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\nano
+      rtt:
+        function_map:
+          rt_hw_board_init;: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\rtt
+  - sub_series_name: STM32WL55
+    chips:
+    - chip_name: STM32WL55JCIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WL55JCIx\link.lds
+          marco:
+          - STM32WL55xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wl55xx_cm4.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wl55xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WL55UCYx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WL55UCYx\link.lds
+          marco:
+          - STM32WL55xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wl55xx_cm4.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wl55xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART1
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PA9
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+      rx_pin:
+        default_value: PA10
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+    docs:
+    - file: documents\DS13293.pdf
+      title: STM32WL55xx Data Sheet
+    svd:
+      file: debug\svd\STM32WL5x_CM4.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\baremetal
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\nano
+      rtt:
+        function_map:
+          rt_hw_board_init;: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\rtt
+  - sub_series_name: STM32WLE4
+    chips:
+    - chip_name: STM32WLE4C8Ux
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00010000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4C8Ux\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE4CBUx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00020000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x0000C000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4CBUx\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE4CCUx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4CCUx\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE4J8Ix
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00010000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4J8Ix\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE4JBIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00020000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x0000C000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4JBIx\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE4JCIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE4JCIx\link.lds
+          marco:
+          - STM32WLE4xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle4xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle4xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART1
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PA9
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+      rx_pin:
+        default_value: PA10
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB7
+    docs:
+    - file: documents\DS13105.pdf
+      title: STM32WLE4xx Data Sheet
+    svd:
+      file: debug\svd\STM32WLE5_CM4.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\baremetal
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\nano
+      rtt:
+        function_map:
+          rt_hw_board_init;: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\rtt
+  - sub_series_name: STM32WLE5
+    chips:
+    - chip_name: STM32WLE5C8Ux
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00010000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5C8Ux\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5CBUx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00020000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x0000C000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5CBUx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5CCUx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5CCUx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5J8Ix
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00010000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5J8Ix\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5JBIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00020000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x0000C000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5JBIx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5JCIx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00040000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5JCIx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5U8Yx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00010000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00005000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5U8Yx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: STM32WLE5UBYx
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x08000000'
+        size: '0x00020000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x0000C000'
+        init: '0'
+        default: '1'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\STM32WLE5UBYx\link.lds
+          marco:
+          - STM32WLE5xx
+          files:
+          - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\gcc\startup_stm32wle5xx.S
+          - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wle5xx.h
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART1
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PA9
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+      rx_pin:
+        default_value: PA10
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB7
+    docs:
+    - file: documents\DS13105.pdf
+      title: STM32WLE5xx Data Sheet
+    svd:
+      file: debug\svd\STM32WLE5_CM4.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\baremetal
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\nano
+      rtt:
+        function_map:
+          rt_hw_board_init;: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_STM32
+        - SOC_SERIES_STM32WL
+        - USE_HAL_DRIVER
+        source_files:
+        - drivers\rtt
+  docs:
+  - file: documents\DUI0553B_cortex_m4_dgug.pdf
+    title: Cortex-M4 Generic User Guide
+  source_files:
+    file:
+    - libraries\STM32WLxx_HAL_Driver
+    - libraries\CMSIS\Include
+    - libraries\CMSIS\RTOS
+    - libraries\CMSIS\Device\ST\STM32WLxx\Include\stm32wlxx.h
+    - libraries\CMSIS\Device\ST\STM32WLxx\Include\system_stm32wlxx.h
+    - libraries\CMSIS\Device\ST\STM32WLxx\Source\Templates\system_stm32wlxx.c
+  cpu_info:
+    max_clock: '48000000'
+    core: Cortex-M4
+    fpu: '0'
+    mpu: '0'
+    endian: Little-endian
+  ui:
+    uart:
+      default_value: UART1
+      prompt_message_en: select one uart as console output interface
+      prompt_message_zh: 选择一个串口作为控制台信息输出接口
+    tx_pin:
+      default_value: PA9
+      prompt_message_en: 'set the tx pin name of the console device interface, the
+        value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+      prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+    rx_pin:
+      default_value: PA10
+      prompt_message_en: 'set the rx pin name of the console device interface, the
+        value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+      prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB7
+
