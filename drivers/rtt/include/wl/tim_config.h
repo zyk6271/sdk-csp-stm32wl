@@ -36,7 +36,16 @@ extern "C" {
     }
 #endif
 #endif /* TIM_DEV_INFO_CONFIG */
-
+#ifdef BSP_USING_TIM1
+#ifndef TIM1_CONFIG
+#define TIM1_CONFIG                                        \
+    {                                                      \
+       .tim_handle.Instance     = TIM1,                    \
+       .tim_irqn                = TIM1_UP_IRQn,               \
+       .name                    = "timer1",                \
+    }
+#endif /* TIM1_CONFIG */
+#endif /* BSP_USING_TIM1 */
 #ifdef BSP_USING_TIM2
 #ifndef TIM2_CONFIG
 #define TIM2_CONFIG                                        \
